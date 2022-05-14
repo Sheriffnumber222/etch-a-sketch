@@ -1,1 +1,2 @@
 # etch-a-sketch
+To Do: Send error if the user inputs an invalid brush size value, clean up code with readable comments, complete step 5, publish on Odin, document lessons learned here on README, any additional adds that sound fun.
