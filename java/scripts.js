@@ -23,17 +23,25 @@ const newGridBtn = document.querySelector("#new-grid");
 
 /* When New Canvas button is pressed. Ask for brush width and caculuate and generate a grid based off that number.*/
 newGridBtn.addEventListener("click", () => {
-    let brushSize = prompt("Brush Pixel Size? (800px MAX, 8px min)", 100);
-    let gridSize = Math.round(800 / brushSize);
-    createGrid (gridSize, gridSize);
-    
+    let brushSize = Number(prompt("Brush Pixel Size? (800px MAX, 8px min)", 100));
+    let brushCheck = brushSize;
+    console.log(brushCheck);
+    if (isNaN(brushCheck) || brushCheck > 800 || brushCheck < 8) {
+        alert("Invalid Input");
+        return; 
+    } else {
+        console.log(brushSize);
+        let gridSize = Math.round(800 / brushSize);
+        createGrid (gridSize, gridSize);
+        
     /* This code is so the drawing event listener is applied to new grid*/
-    const gridSquares = document.querySelectorAll(".etch-row");
-    gridSquares.forEach((div) => {
-        div.addEventListener("mouseover", () => {
-            div.classList.add("etch-row-on");
+        const gridSquares = document.querySelectorAll(".etch-row");
+        gridSquares.forEach((div) => {
+            div.addEventListener("mouseover", () => {
+                div.classList.add("etch-row-on");
+            });
         });
-    });
+    }
 });
 
 
