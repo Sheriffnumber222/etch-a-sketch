@@ -19,21 +19,28 @@ function createGrid (width, height) {
 
 createGrid (24, 24);
 
+/* This will listen for when the mouse hovers over any sqaure in the
+grid. When it does, it changes the class of the targeted square 
+which will make it black, creating a painting effect*/
+const gridSquares = document.querySelectorAll(".etch-row");
+gridSquares.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+        div.classList.add("etch-row-on");
+    });
+});
+
 const newGridBtn = document.querySelector("#new-grid");
 
 /* When New Canvas button is pressed. Ask for brush width and caculuate and generate a grid based off that number.*/
 newGridBtn.addEventListener("click", () => {
     let brushSize = Number(prompt("Brush Pixel Size? (800px MAX, 8px min)", 100));
-    let brushCheck = brushSize;
-    console.log(brushCheck);
-    if (isNaN(brushCheck) || brushCheck > 800 || brushCheck < 8) {
+    if (isNaN(brushSize) || brushSize > 800 || brushSize < 8) { //reject values that could cause the grid generation to crash
         alert("Invalid Input");
         return; 
     } else {
         console.log(brushSize);
         let gridSize = Math.round(800 / brushSize);
         createGrid (gridSize, gridSize);
-        
     /* This code is so the drawing event listener is applied to new grid*/
         const gridSquares = document.querySelectorAll(".etch-row");
         gridSquares.forEach((div) => {
@@ -44,13 +51,3 @@ newGridBtn.addEventListener("click", () => {
     }
 });
 
-
-/* This will listen for when the mouse hovers over any sqaure in the
-grid. When it does, it changes the class of the targeted square 
-which will make it black, creating a painting effect*/
-const gridSquares = document.querySelectorAll(".etch-row");
-gridSquares.forEach((div) => {
-    div.addEventListener("mouseover", () => {
-        div.classList.add("etch-row-on");
-    });
-});
