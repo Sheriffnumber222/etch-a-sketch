@@ -1,8 +1,18 @@
 const container = document.querySelector("#etch-a-sketch-box");
 
-/*This function generates a grid based off of width and height inputed*/
+/*This generates an event listener that changes divs to a new class/color. It's like painting! */
+function addDrawingToGrid (gridSquares) {
+    gridSquares = document.querySelectorAll(".etch-row");
+    gridSquares.forEach((div) => {
+        div.addEventListener("mouseover", () => {
+            div.classList.add("etch-row-on");
+        });
+    });
+}
+
+/*This generates a grid of divs*/
 function createGrid (width, height) {
-    while (container.firstChild) {
+    while (container.firstChild) { //deletes previous grid
         container.removeChild(container.firstChild);
     };
     for (i=0; i<width; i++) {
@@ -15,39 +25,24 @@ function createGrid (width, height) {
             newDiv.appendChild(newerDiv);
         }
     };
+    /*Need to regenerate listener to work on new grid*/
+    addDrawingToGrid();
 }
 
 createGrid (24, 24);
 
-/* This will listen for when the mouse hovers over any sqaure in the
-grid. When it does, it changes the class of the targeted square 
-which will make it black, creating a painting effect*/
-const gridSquares = document.querySelectorAll(".etch-row");
-gridSquares.forEach((div) => {
-    div.addEventListener("mouseover", () => {
-        div.classList.add("etch-row-on");
-    });
-});
-
 const newGridBtn = document.querySelector("#new-grid");
 
-/* When New Canvas button is pressed. Ask for brush width and caculuate and generate a grid based off that number.*/
+/* When user presses new canvas button, ask for brush size then caculuate and generate a new grid.*/
 newGridBtn.addEventListener("click", () => {
     let brushSize = Number(prompt("Brush Pixel Size? (800px MAX, 8px min)", 100));
-    if (isNaN(brushSize) || brushSize > 800 || brushSize < 8) { //reject values that could cause the grid generation to crash
+    if (isNaN(brushSize) || brushSize > 800 || brushSize < 8) { //reject values that could cause crash
         alert("Invalid Input");
         return; 
     } else {
         console.log(brushSize);
         let gridSize = Math.round(800 / brushSize);
         createGrid (gridSize, gridSize);
-    /* This code is so the drawing event listener is applied to new grid*/
-        const gridSquares = document.querySelectorAll(".etch-row");
-        gridSquares.forEach((div) => {
-            div.addEventListener("mouseover", () => {
-                div.classList.add("etch-row-on");
-            });
-        });
-    }
+    } 
 });
 

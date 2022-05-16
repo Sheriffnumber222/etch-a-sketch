@@ -1,2 +1,4 @@
 # etch-a-sketch
-To Do: Send error if the user inputs an invalid brush size value, clean up code with readable comments, complete step 5, publish on Odin, document lessons learned here on README, any additional adds that sound fun.
+This lesson helped me sharpen my javascript fundementals using a peice of everything I've learned so far.
+Query Selectors, conditional statements, functions were all used to create this Etch N Sketch
+In the future, I would like to go back and tune this into a product worth showing off
