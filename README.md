@@ -1,4 +1,2 @@
 # etch-a-sketch
-This lesson helped me sharpen my javascript fundementals using a peice of everything I've learned so far.
-Query Selectors, conditional statements, functions were all used to create this Etch N Sketch
-In the future, I would like to go back and tune this into a product worth showing off
+This project helped me sharpen my JavaScript fundamentals using a piece of everything I've learned so far. Query selectors, conditional statements, and functions were all used to create this.![image](https://user-images.githubusercontent.com/97926718/182431931-a92ad628-045c-4d13-9dc7-bbc980ddc355.png)
